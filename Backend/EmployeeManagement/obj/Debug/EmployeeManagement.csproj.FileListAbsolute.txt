@@ -114,3 +114,5 @@ D:\EmpoloyeeManagement\Backend\EmployeeManagement\obj\Debug\EmployeeManagement.c
 D:\EmpoloyeeManagement\Backend\EmployeeManagement\obj\Debug\EmployeeManagement.csproj.CopyComplete
 D:\EmpoloyeeManagement\Backend\EmployeeManagement\obj\Debug\EmployeeManagement.dll
 D:\EmpoloyeeManagement\Backend\EmployeeManagement\obj\Debug\EmployeeManagement.pdb
+D:\EmpoloyeeManagement\Backend\EmployeeManagement\bin\Swashbuckle.Core.dll
+D:\EmpoloyeeManagement\Backend\EmployeeManagement\bin\WebActivatorEx.dll
