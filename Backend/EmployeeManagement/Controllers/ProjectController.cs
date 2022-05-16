@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Model;
+using DataAccessLayer.Model.ViewModel;
 using DataAccessLayer.Services;
 using EmployeeManagement.CommonFunctions;
 using EmployeeManagement.Models;
