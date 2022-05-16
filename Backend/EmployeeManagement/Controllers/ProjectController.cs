@@ -41,6 +41,7 @@ namespace EmployeeManagement.Controllers
             return objResponse;
         }
 
+        [HttpPost]
         public JsonResponse InsertProject(ProjectViewModel project)
         {
             try

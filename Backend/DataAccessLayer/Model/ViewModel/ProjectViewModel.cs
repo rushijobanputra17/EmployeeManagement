@@ -8,17 +8,17 @@ namespace DataAccessLayer.Model.ViewModel
 {
     public class ProjectViewModel
     {
-        int? Id { get; set; }
+       public int? Id { get; set; }
 
-        string Name { get; set; }
+        public string Name { get; set; }
 
-        string Description { get; set; }
+        public string Description { get; set; }
 
-        DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; }
 
-        string Status { get; set; }
+        public string Status { get; set; }
 
-        Boolean IsActive { get; set; }
+        public Boolean IsActive { get; set; }
 
 
     }
