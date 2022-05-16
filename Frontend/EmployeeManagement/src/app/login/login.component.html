@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div nz-row class="d-flex justify-content-center p-5">
+        <form nz-form [formGroup]="validateForm"  class="customForm border  p-5"  (ngSubmit)="submitForm()">
+          <div nz-col nzSpan="24">
+            <p class="title-design">Login Form</p>
+          </div>
+          <nz-form-label [nzSpan]="12" nzRequired>Username</nz-form-label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Username!">
+              <nz-input-group nzPrefixIcon="user">
+                <input formControlName="userName" nz-input placeholder="Username"  />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-label [nzSpan]="12" nzRequired>Password</nz-form-label>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+              <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+                <input  [type]="passwordVisible ? 'text' : 'password'" formControlName="password" nz-input type="password" placeholder="Password" />
+              </nz-input-group>
+              <ng-template #suffixTemplate>
+                <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="w-100">
+            <span class="p-1">Or</span> <span class="p-1"><a routerLink="/register">register now!</a></span>
+          </nz-form-item>
+          <nz-form-item class="w-100">
+            <nz-form-control>
+              <button nz-button nzType="primary" [disabled]="validateForm.controls['userName'].invalid">Log in</button>
+            </nz-form-control>
+          </nz-form-item>
+        
+        </form>
+      </div>
+</div>
+ 

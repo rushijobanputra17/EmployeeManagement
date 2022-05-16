@@ -1,0 +1,57 @@
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import "~ng-zorro-antd/style/index.min.css"; /* Import base styles */
+@import "~ng-zorro-antd/button/style/index.min.css";  /* Import one component's styles */
+
+@import "~bootstrap/dist/css/bootstrap.css";/* You can add global styles to this file, and also import other style files */
+
+
+.title-design{
+    font-size:22px!important;
+    font-weight: 500!important;
+    text-align:center;
+    font-family:monospace;
+    background-image: linear-gradient(to right, rgba(123, 196, 212, 0), rgb(220, 229, 233));
+    border-radius:10px;
+}
+
+.title-div{
+    border:1px solid black!important;
+}
+
+.login-title{
+    font-size:15px!important;
+    color: white !important;
+}
+
+.w-100{
+width: 250px !important;
+}
+
+.m-10{
+    margin-left:10px !important;
+}
+
+.customForm{
+  width:30%;
+  background-image: linear-gradient(to bottom right, rgba(162, 237, 254, 0.591), rgba(182, 233, 255, 0));
+}
+
+
+::-webkit-scrollbar {
+    width: 1px;
+    height: 5px;
+  }
+  
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  
+  ::-webkit-scrollbar-thumb {
+    background:#2C2B29;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

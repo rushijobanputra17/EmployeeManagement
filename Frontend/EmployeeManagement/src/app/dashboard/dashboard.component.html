@@ -1,0 +1,106 @@
+<div  [ngClass]="{'blurPage': showLoader}">    
+    <div class="container-fluid">
+      <div class="m-1"><h1 class="title-design">Project Details</h1></div>
+      <button class="btn btn-primary m-2 p-2"(click)="showModal()">Add Product</button>
+      <button class="btn btn-primary p-2"(click)="getEmployeeData()">Get Data</button>
+     <nz-switch class=" p-2" [(ngModel)]="switchValue"></nz-switch><span class="p-2 lead" style="font-size:22px">Status</span>
+      <div class="d-flex justify-content-end"> 
+      <div class="ant-table-filter-dropdown">
+        <div class="search-box row">
+          <div class="col-12"> 
+            <nz-input-group nzPrefixIcon="search">
+            <input type="text" nz-input placeholder="Search Project Name"  (keyup)="search()" [(ngModel)]="searchValue" />
+            </nz-input-group>
+          </div>
+        </div>
+      </div>
+      </div>
+     
+      <nz-table [nzData]="Employee" class="mt-3" nzDark [nzPageSize]="10" nzShowPagination #hhtpTable >
+          <thead class="border">
+            <tr>
+              <th>#ID</th>
+              <th>Project Name</th>
+              <th>Description</th>
+              <th>Start Date</th>
+              <th>Status</th>
+              <th>Active Status</th>
+              <th>Action#</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let data of hhtpTable.data"> 
+                <td>{{data.Id}}</td>
+                <td>{{data.Name}}</td>
+                <td>{{data.Description}}</td>
+                <td>{{data.StartDate}}</td>
+                <td><nz-select style="width:80%" [ngModel]="data.Status">
+                    <nz-option nzValue="InProgress" nzLabel="InProgress"></nz-option>
+                    <nz-option nzValue="Completed" nzLabel="Completed"></nz-option>
+                    <nz-option nzValue="Created" nzLabel="Created" ></nz-option>
+                  </nz-select></td>
+                <td><input class="check" type="checkbox" disabled [checked]="data.IsActive"></td>
+                <td> 
+                  <button nz-button class="btn-outline-primary" (click)="EditProduct(data)"><i nz-icon nzType="edit" nzTheme="outline"></i></button> 
+                  <button nz-button class="btn-outline-danger m-1" nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="DeleteProduct(data)"><i nz-icon nzType="delete" nzTheme="outline"></i>
+                  </button>
+                </td>
+              
+              </tr>
+          </tbody>
+        </nz-table>
+    </div>
+</div>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Add Project" [nzWidth]="650" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <ng-container *nzModalContent>
+          <form nz-form [formGroup]="validateForm" class="login-form">
+            <div class="modal-container">
+            <nz-form-label [nzSm]="7" [nzXs]="24" nzRequired>Project Name</nz-form-label>
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your Product Name!">
+                  <nz-input-group>
+                    <input type="text" nz-input formControlName="Name" placeholder="Product Name" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-label  [nzSm]="7" [nzXs]="24" nzRequired>Description</nz-form-label>
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your Product Description!">
+                  <nz-input-group>
+                    <textarea nz-input formControlName="Description" placeholder="Description" ></textarea>
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-label [nzSm]="7" [nzXs]="24" nzRequired>Start Date</nz-form-label>
+              <nz-form-item>
+                  <nz-form-control zErrorTip="Please select date">
+                    <nz-date-picker style="width:100%;" nz-input formControlName="datePicker"></nz-date-picker>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-label [nzSm]="7" [nzXs]="24" nzRequired>Project Status</nz-form-label>
+                <nz-form-item>              
+                  <nz-form-control  nzErrorTip="Please select Status!">
+                    <nz-select  nz-input formControlName="status">
+                        <nz-option nzValue="InProgress" selected nzLabel="InProgress"></nz-option>
+                        <nz-option nzValue="Completed" nzLabel="Completed"></nz-option>
+                        <nz-option nzValue="Created" nzLabel="Created" ></nz-option>
+                      </nz-select>
+                  </nz-form-control>
+                </nz-form-item>
+                <span  nz-input style="font-size:18px">IsActive</span>
+                <nz-form-item>
+                    <nz-switch nz-input formControlName="active"></nz-switch>
+                </nz-form-item>
+            </div>
+            </form>
+      </ng-container>
+   
+    </nz-modal>
+     
+  
+  <div *ngIf="showLoader">
+    <div style="display:flex;justify-content:center;align-items:center;" class="loader-container">
+      <i nz-icon [nzType]="'loading'" class="customLoader"></i>
+    </div>
+  </div>
+  
