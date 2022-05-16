@@ -390,3 +390,5 @@ D:\EmployeeManagement\Backend\EmployeeManagement\obj\Debug\EmployeeManagement.cs
 D:\EmployeeManagement\Backend\EmployeeManagement\obj\Debug\EmployeeManagement.csproj.CopyComplete
 D:\EmployeeManagement\Backend\EmployeeManagement\obj\Debug\EmployeeManagement.dll
 D:\EmployeeManagement\Backend\EmployeeManagement\obj\Debug\EmployeeManagement.pdb
+D:\EmployeeManagement\Backend\EmployeeManagement\bin\AutoMapper.dll
+D:\EmployeeManagement\Backend\EmployeeManagement\bin\AutoMapper.xml
