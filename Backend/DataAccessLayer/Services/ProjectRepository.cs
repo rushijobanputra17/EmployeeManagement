@@ -30,5 +30,15 @@ namespace DataAccessLayer.Services
         {
             objDataAccess.InsertUpdateProject(project.Id,project.Name,project.Description,project.StartDate,project.IsActive);
         }
+
+        public int? DeleteProject(int projectId)
+        {
+            return objDataAccess.DeleteProject(projectId).FirstOrDefault().Response;
+        }
+
+        public void changeProjectStatus(int id, string status)
+        {
+            objDataAccess.ChangeProjectStatus(id, status);
+        }
     }
 }

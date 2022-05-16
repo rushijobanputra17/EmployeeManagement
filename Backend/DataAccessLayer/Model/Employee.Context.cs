@@ -94,15 +94,6 @@ namespace DataAccessLayer.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangeProjectStatus", projectIdParameter, statusParameter);
         }
     
-        public virtual int DeleteProject(Nullable<int> projectId)
-        {
-            var projectIdParameter = projectId.HasValue ?
-                new ObjectParameter("ProjectId", projectId) :
-                new ObjectParameter("ProjectId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteProject", projectIdParameter);
-        }
-    
         public virtual ObjectResult<GetProjectById_Result> GetProjectById(Nullable<int> projectId)
         {
             var projectIdParameter = projectId.HasValue ?
@@ -153,6 +144,15 @@ namespace DataAccessLayer.Model
                 new ObjectParameter("IsActive", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUpdateProject", projectIdParameter, nameParameter, descriptionParameter, startDateParameter, isActiveParameter);
+        }
+    
+        public virtual ObjectResult<DeleteProject_Result> DeleteProject(Nullable<int> projectId)
+        {
+            var projectIdParameter = projectId.HasValue ?
+                new ObjectParameter("ProjectId", projectId) :
+                new ObjectParameter("ProjectId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DeleteProject_Result>("DeleteProject", projectIdParameter);
         }
     }
 }

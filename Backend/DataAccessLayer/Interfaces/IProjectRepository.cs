@@ -14,5 +14,9 @@ namespace DataAccessLayer.Interfaces
         List<GetProjectById_Result> GetProjectByid(int id);
 
         void InsertUpdateProject(Project project);
+
+        int? DeleteProject(int projectId);
+
+        void changeProjectStatus(int id, string status);
     }
 }

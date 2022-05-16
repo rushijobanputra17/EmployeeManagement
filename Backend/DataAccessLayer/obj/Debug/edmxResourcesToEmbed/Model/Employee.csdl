@@ -36,9 +36,6 @@
       <Parameter Name="ProjectId" Mode="In" Type="Int32" />
       <Parameter Name="Status" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="DeleteProject">
-      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="GetProjectById" ReturnType="Collection(harshmungra_SatvaModel.GetProjectById_Result)">
       <Parameter Name="ProjectId" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -54,6 +51,9 @@
       <Parameter Name="Description" Mode="In" Type="String" />
       <Parameter Name="StartDate" Mode="In" Type="DateTime" />
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteProject" ReturnType="Collection(harshmungra_SatvaModel.DeleteProject_Result)">
+      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GetEmployees_Result">
@@ -105,5 +105,8 @@
     <Property Type="String" Name="EmployeeName" Nullable="false" MaxLength="150" />
     <Property Type="Int32" Name="ProjectId" Nullable="false" />
     <Property Type="String" Name="ProjectName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="DeleteProject_Result">
+    <Property Type="Int32" Name="Response" Nullable="true" />
   </ComplexType>
 </Schema>

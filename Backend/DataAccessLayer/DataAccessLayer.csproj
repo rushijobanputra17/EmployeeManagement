@@ -55,6 +55,9 @@
   <ItemGroup>
     <Compile Include="Interfaces\IEmployeeRepository.cs" />
     <Compile Include="Interfaces\IProjectRepository.cs" />
+    <Compile Include="Model\DeleteProject_Result.cs">
+      <DependentUpon>Employee.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Employee.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

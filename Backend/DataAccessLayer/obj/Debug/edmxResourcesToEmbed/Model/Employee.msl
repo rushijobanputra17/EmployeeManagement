@@ -55,7 +55,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="ChangeProjectStatus" FunctionName="harshmungra_SatvaModel.Store.ChangeProjectStatus" />
-    <FunctionImportMapping FunctionImportName="DeleteProject" FunctionName="harshmungra_SatvaModel.Store.DeleteProject" />
     <FunctionImportMapping FunctionImportName="GetProjectById" FunctionName="harshmungra_SatvaModel.Store.GetProjectById">
       <ResultMapping>
         <ComplexTypeMapping TypeName="harshmungra_SatvaModel.GetProjectById_Result">
@@ -91,5 +90,12 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="InsertUpdateProject" FunctionName="harshmungra_SatvaModel.Store.InsertUpdateProject" />
+    <FunctionImportMapping FunctionImportName="DeleteProject" FunctionName="harshmungra_SatvaModel.Store.DeleteProject">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="harshmungra_SatvaModel.DeleteProject_Result">
+          <ScalarProperty Name="Response" ColumnName="Response" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
