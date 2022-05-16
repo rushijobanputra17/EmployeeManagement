@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Services
 {
-    internal class ProjectRepository
+    public class ProjectRepository
     {
         private harshmungra_SatvaEntities objDataAccess;
 
@@ -19,6 +19,11 @@ namespace DataAccessLayer.Services
         public List<GetProjects_Result> GetAllProject(bool isActicve)
         {
             return objDataAccess.GetProjects(isActicve).ToList();
+        }
+
+        public GetProjectById_Result GetProjectByid(int projectId)
+        {
+            return objDataAccess.GetProjectById(projectId).FirstOrDefault();
         }
     }
 }

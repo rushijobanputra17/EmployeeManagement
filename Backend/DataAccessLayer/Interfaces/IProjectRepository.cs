@@ -10,5 +10,8 @@ namespace DataAccessLayer.Interfaces
     public interface IProjectRepository
     {
         List<GetProjects_Result> GetAllProject(bool isActicve);
+
+        List<GetProjectById_Result> GetProjectByid(int id);
+
     }
 }
