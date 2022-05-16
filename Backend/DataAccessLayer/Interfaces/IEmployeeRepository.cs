@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using DataAccessLayer.Model;
 
 namespace DataAccessLayer.Interfaces
 {
     public interface IEmployeeRepository
     {
-
+        List<GetEmployees_Result> GetEmployees(bool isActive);
+        List<GetEmployeesByProject_Result> GetEmployeesByProject(int projectId);
+        void InsertUpdateEmployee(Employee employee);
     }
 }
