@@ -24,3 +24,5 @@ D:\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.C
 D:\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 D:\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
 D:\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\AutoMapper.dll
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\AutoMapper.xml

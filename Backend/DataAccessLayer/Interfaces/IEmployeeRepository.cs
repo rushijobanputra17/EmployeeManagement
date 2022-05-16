@@ -8,5 +8,6 @@ namespace DataAccessLayer.Interfaces
         List<GetEmployees_Result> GetEmployees(bool isActive);
         List<GetEmployeesByProject_Result> GetEmployeesByProject(int projectId);
         void InsertUpdateEmployee(Employee employee);
+        bool UpdateEmployeeStatus(int employeeId, bool status);
     }
 }

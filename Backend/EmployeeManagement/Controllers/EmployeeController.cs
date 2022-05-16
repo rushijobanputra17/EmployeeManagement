@@ -93,5 +93,64 @@ namespace EmployeeManagement.Controllers
             }
             return objResponse;
         }
+
+        [HttpPut]
+        public JsonResponse UpdateEmployee(EmployeeViewModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    employeeRepository.InsertUpdateEmployee(mapper.Map<Employee>(model));
+                    objResponse = UtilityFunctions.GetJsonResponse(1, "Record updated successfully", model);
+                }
+                else
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(0, "Some input is invalid", ModelState.Values.SelectMany(v => v.Errors).Select(v => v.ErrorMessage).ToList());
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(2, "Exception", ex.InnerException.Message);
+                }
+                else
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(2, "Exception", ex.Message);
+                }
+            }
+            return objResponse;
+        }
+
+        [HttpPatch]
+        public JsonResponse UpdateEmployeeStatus(int employeeId, bool status)
+        {
+            try
+            {
+                if (employeeRepository.UpdateEmployeeStatus(employeeId, status))
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(1, "Status updated successfully", status);
+                }
+                else
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(0, "Error", "Error occured while updating status");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(2, "Exception", ex.InnerException.Message);
+                }
+                else
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(2, "Exception", ex.Message);
+                }
+            }
+            return objResponse;
+        }
+
+        
     }
 }

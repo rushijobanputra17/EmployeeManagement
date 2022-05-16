@@ -66,6 +66,10 @@
     <Parameter Name="StartDate" Type="date" Mode="In" />
     <Parameter Name="IsActive" Type="bit" Mode="In" />
   </Function>
+  <Function Name="UpdateEmployeeStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmployeeId" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="bit" Mode="In" />
+  </Function>
   <EntityContainer Name="harshmungra_SatvaModelStoreContainer">
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />

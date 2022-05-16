@@ -55,6 +55,10 @@
       <Parameter Name="StartDate" Mode="In" Type="DateTime" />
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <FunctionImport Name="UpdateEmployeeStatus" ReturnType="Collection(Boolean)">
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GetEmployees_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />

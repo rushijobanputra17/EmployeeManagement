@@ -154,5 +154,18 @@ namespace DataAccessLayer.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUpdateProject", projectIdParameter, nameParameter, descriptionParameter, startDateParameter, isActiveParameter);
         }
+    
+        public virtual ObjectResult<Nullable<bool>> UpdateEmployeeStatus(Nullable<int> employeeId, Nullable<bool> status)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("EmployeeId", employeeId) :
+                new ObjectParameter("EmployeeId", typeof(int));
+    
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UpdateEmployeeStatus", employeeIdParameter, statusParameter);
+        }
     }
 }

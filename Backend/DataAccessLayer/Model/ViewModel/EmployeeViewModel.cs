@@ -23,6 +23,7 @@ namespace DataAccessLayer.Model.ViewModel
         public int? DeptId { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public System.DateTime JoiningDate { get; set; }
 
         [Required]
