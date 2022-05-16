@@ -14,11 +14,41 @@
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="ModifiedDate" Type="datetime" />
   </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="Status" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <Function Name="ChangeProjectStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectId" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectId" Type="int" Mode="In" />
+  </Function>
   <Function Name="GetEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IsActive" Type="bit" Mode="In" />
   </Function>
   <Function Name="GetEmployeesByProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ProjectId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetProjectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetProjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="GetProjectsByEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmployeeId" Type="int" Mode="In" />
   </Function>
   <Function Name="InsertUpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="EmpId" Type="int" Mode="In" />
@@ -29,7 +59,15 @@
     <Parameter Name="IsDeleted" Type="bit" Mode="In" />
     <Parameter Name="IsActive" Type="bit" Mode="In" />
   </Function>
+  <Function Name="InsertUpdateProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectId" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="StartDate" Type="date" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+  </Function>
   <EntityContainer Name="harshmungra_SatvaModelStoreContainer">
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

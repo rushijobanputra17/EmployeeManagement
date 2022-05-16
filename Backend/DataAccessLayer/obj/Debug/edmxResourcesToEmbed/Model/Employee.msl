@@ -39,5 +39,57 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="InsertUpdateEmployee" FunctionName="harshmungra_SatvaModel.Store.InsertUpdateEmployee" />
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="harshmungra_SatvaModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ChangeProjectStatus" FunctionName="harshmungra_SatvaModel.Store.ChangeProjectStatus" />
+    <FunctionImportMapping FunctionImportName="DeleteProject" FunctionName="harshmungra_SatvaModel.Store.DeleteProject" />
+    <FunctionImportMapping FunctionImportName="GetProjectById" FunctionName="harshmungra_SatvaModel.Store.GetProjectById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="harshmungra_SatvaModel.GetProjectById_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetProjects" FunctionName="harshmungra_SatvaModel.Store.GetProjects">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="harshmungra_SatvaModel.GetProjects_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetProjectsByEmployee" FunctionName="harshmungra_SatvaModel.Store.GetProjectsByEmployee">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="harshmungra_SatvaModel.GetProjectsByEmployee_Result">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InsertUpdateProject" FunctionName="harshmungra_SatvaModel.Store.InsertUpdateProject" />
   </EntityContainerMapping>
 </Mapping>
