@@ -25,5 +25,10 @@ namespace DataAccessLayer.Services
         {
             return objDataAccess.GetProjectById(projectId).FirstOrDefault();
         }
+
+        public void InsertUpdateProject(Project project)
+        {
+            objDataAccess.InsertUpdateProject(project.Id,project.Name,project.Description,project.StartDate,project.IsActive);
+        }
     }
 }
