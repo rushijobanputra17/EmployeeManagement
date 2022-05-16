@@ -72,12 +72,13 @@ namespace EmployeeManagement.Controllers
         }
 
         [HttpPut]
-        public JsonResponse UpdateProject(ProjectViewModel project)
+        public JsonResponse UpdateProject(int id,ProjectViewModel project)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    project.Id = id;
                     projectRepository.InsertUpdateProject(mapper.Map<Project>(project));
                     objResponse = UtilityFunctions.GetJsonResponse(1, "Record updated successfully", project);
                 }
@@ -105,6 +106,7 @@ namespace EmployeeManagement.Controllers
         {
             try
             {
+
                 int? responseStatus = projectRepository.DeleteProject(projectId);
                 if(responseStatus==1)
                 {
@@ -143,6 +145,28 @@ namespace EmployeeManagement.Controllers
                 objResponse = UtilityFunctions.GetJsonResponse(1, "Status Updated Successfully", id);
             }
             catch(Exception ex)
+            {
+                if (ex.InnerException != null)
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(2, "Exception", ex.InnerException.Message);
+                }
+                else
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(2, "Exception", ex.Message);
+                }
+            }
+            return objResponse;
+        }
+
+        [Route("GetProjectByEmployee")]
+        public JsonResponse GetProjectByEmployeeId(int employeeId)
+        {
+            try
+            {
+                var projects = projectRepository.GetProjectByEmployeeId(employeeId);
+                objResponse = UtilityFunctions.GetJsonResponse(1, "Records found : " + projects.Count(), projects);
+            }
+            catch (Exception ex)
             {
                 if (ex.InnerException != null)
                 {

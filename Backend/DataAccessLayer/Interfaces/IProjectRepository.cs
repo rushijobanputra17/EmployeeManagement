@@ -18,5 +18,7 @@ namespace DataAccessLayer.Interfaces
         int? DeleteProject(int projectId);
 
         void changeProjectStatus(int id, string status);
+
+        List<GetProjectsByEmployee_Result> GetProjectByEmployeeId(int? employeeId);
     }
 }

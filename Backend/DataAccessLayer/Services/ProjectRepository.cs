@@ -40,5 +40,11 @@ namespace DataAccessLayer.Services
         {
             objDataAccess.ChangeProjectStatus(id, status);
         }
+
+
+        public List<GetProjectsByEmployee_Result> GetProjectByEmployeeId(int? employeeId)
+        {
+            return objDataAccess.GetProjectsByEmployee(employeeId).ToList();
+        }
     }
 }
