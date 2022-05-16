@@ -28,6 +28,7 @@ namespace DataAccessLayer.Model
         }
     
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
     
         public virtual ObjectResult<GetEmployees_Result> GetEmployees(Nullable<bool> isActive)
         {
@@ -78,6 +79,80 @@ namespace DataAccessLayer.Model
                 new ObjectParameter("IsActive", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUpdateEmployee", empIdParameter, nameParameter, deptIdParameter, joiningDateParameter, salaryParameter, isDeletedParameter, isActiveParameter);
+        }
+    
+        public virtual int ChangeProjectStatus(Nullable<int> projectId, string status)
+        {
+            var projectIdParameter = projectId.HasValue ?
+                new ObjectParameter("ProjectId", projectId) :
+                new ObjectParameter("ProjectId", typeof(int));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangeProjectStatus", projectIdParameter, statusParameter);
+        }
+    
+        public virtual int DeleteProject(Nullable<int> projectId)
+        {
+            var projectIdParameter = projectId.HasValue ?
+                new ObjectParameter("ProjectId", projectId) :
+                new ObjectParameter("ProjectId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteProject", projectIdParameter);
+        }
+    
+        public virtual ObjectResult<GetProjectById_Result> GetProjectById(Nullable<int> projectId)
+        {
+            var projectIdParameter = projectId.HasValue ?
+                new ObjectParameter("ProjectId", projectId) :
+                new ObjectParameter("ProjectId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProjectById_Result>("GetProjectById", projectIdParameter);
+        }
+    
+        public virtual ObjectResult<GetProjects_Result> GetProjects(Nullable<bool> isActive)
+        {
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProjects_Result>("GetProjects", isActiveParameter);
+        }
+    
+        public virtual ObjectResult<GetProjectsByEmployee_Result> GetProjectsByEmployee(Nullable<int> employeeId)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("EmployeeId", employeeId) :
+                new ObjectParameter("EmployeeId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProjectsByEmployee_Result>("GetProjectsByEmployee", employeeIdParameter);
+        }
+    
+        public virtual int InsertUpdateProject(Nullable<int> projectId, string name, string description, Nullable<System.DateTime> startDate, Nullable<bool> isActive)
+        {
+            var projectIdParameter = projectId.HasValue ?
+                new ObjectParameter("ProjectId", projectId) :
+                new ObjectParameter("ProjectId", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUpdateProject", projectIdParameter, nameParameter, descriptionParameter, startDateParameter, isActiveParameter);
         }
     }
 }
