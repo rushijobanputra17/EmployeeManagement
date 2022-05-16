@@ -1,16 +1,18 @@
-﻿using System;
-using System.Linq;
-using System.Web.Http;
-using AutoMapper;
+﻿using AutoMapper;
 using DataAccessLayer.Model;
 using DataAccessLayer.Model.ViewModel;
 using DataAccessLayer.Services;
 using EmployeeManagement.CommonFunctions;
 using EmployeeManagement.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace EmployeeManagement.Controllers
 {
-    [Authorize]
     public class EmployeeController : ApiController
     {
         public static EmployeeRepository employeeRepository = new EmployeeRepository();
@@ -41,6 +43,7 @@ namespace EmployeeManagement.Controllers
             return objResponse;
         }
 
+        [Route("GetEmployeesByProject")]
         public JsonResponse GetEmployeesByProject(int projectId)
         {
             try

@@ -19,7 +19,6 @@ D:\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\EntityFramework.SqlServe
 D:\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\AutoMapper.xml
 D:\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\EntityFramework.xml
 D:\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
-D:\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
 D:\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
 D:\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
 D:\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.dll
