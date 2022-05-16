@@ -1,0 +1,12 @@
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\EntityFramework.dll
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\EntityFramework.xml
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.AssemblyReference.cache
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+F:\CompanyTasks\EmployeeManagement\Backend\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
