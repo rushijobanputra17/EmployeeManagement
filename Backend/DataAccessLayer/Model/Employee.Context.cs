@@ -94,15 +94,6 @@ namespace DataAccessLayer.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangeProjectStatus", projectIdParameter, statusParameter);
         }
     
-        public virtual int DeleteProject(Nullable<int> projectId)
-        {
-            var projectIdParameter = projectId.HasValue ?
-                new ObjectParameter("ProjectId", projectId) :
-                new ObjectParameter("ProjectId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteProject", projectIdParameter);
-        }
-    
         public virtual ObjectResult<GetProjectById_Result> GetProjectById(Nullable<int> projectId)
         {
             var projectIdParameter = projectId.HasValue ?
@@ -155,17 +146,13 @@ namespace DataAccessLayer.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUpdateProject", projectIdParameter, nameParameter, descriptionParameter, startDateParameter, isActiveParameter);
         }
     
-        public virtual ObjectResult<Nullable<bool>> UpdateEmployeeStatus(Nullable<int> employeeId, Nullable<bool> status)
+        public virtual ObjectResult<DeleteProject_Result> DeleteProject(Nullable<int> projectId)
         {
-            var employeeIdParameter = employeeId.HasValue ?
-                new ObjectParameter("EmployeeId", employeeId) :
-                new ObjectParameter("EmployeeId", typeof(int));
+            var projectIdParameter = projectId.HasValue ?
+                new ObjectParameter("ProjectId", projectId) :
+                new ObjectParameter("ProjectId", typeof(int));
     
-            var statusParameter = status.HasValue ?
-                new ObjectParameter("Status", status) :
-                new ObjectParameter("Status", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UpdateEmployeeStatus", employeeIdParameter, statusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DeleteProject_Result>("DeleteProject", projectIdParameter);
         }
     }
 }

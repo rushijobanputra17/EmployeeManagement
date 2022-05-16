@@ -71,10 +71,6 @@
           <Parameter Name="StartDate" Type="date" Mode="In" />
           <Parameter Name="IsActive" Type="bit" Mode="In" />
         </Function>
-        <Function Name="UpdateEmployeeStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="EmployeeId" Type="int" Mode="In" />
-          <Parameter Name="Status" Type="bit" Mode="In" />
-        </Function>
         <EntityContainer Name="harshmungra_SatvaModelStoreContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
@@ -119,9 +115,6 @@
             <Parameter Name="ProjectId" Mode="In" Type="Int32" />
             <Parameter Name="Status" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="DeleteProject">
-          <Parameter Name="ProjectId" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetProjectById" ReturnType="Collection(harshmungra_SatvaModel.GetProjectById_Result)">
           <Parameter Name="ProjectId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -138,9 +131,8 @@
             <Parameter Name="StartDate" Mode="In" Type="DateTime" />
             <Parameter Name="IsActive" Mode="In" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="UpdateEmployeeStatus" ReturnType="Collection(Boolean)">
-            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
-            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          <FunctionImport Name="DeleteProject" ReturnType="Collection(harshmungra_SatvaModel.DeleteProject_Result)">
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetEmployees_Result">
@@ -192,6 +184,9 @@
           <Property Type="String" Name="EmployeeName" Nullable="false" MaxLength="150" />
           <Property Type="Int32" Name="ProjectId" Nullable="false" />
           <Property Type="String" Name="ProjectName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="DeleteProject_Result">
+          <Property Type="Int32" Name="Response" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -253,7 +248,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ChangeProjectStatus" FunctionName="harshmungra_SatvaModel.Store.ChangeProjectStatus" />
-          <FunctionImportMapping FunctionImportName="DeleteProject" FunctionName="harshmungra_SatvaModel.Store.DeleteProject" />
           <FunctionImportMapping FunctionImportName="GetProjectById" FunctionName="harshmungra_SatvaModel.Store.GetProjectById">
             <ResultMapping>
               <ComplexTypeMapping TypeName="harshmungra_SatvaModel.GetProjectById_Result">
@@ -289,7 +283,13 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertUpdateProject" FunctionName="harshmungra_SatvaModel.Store.InsertUpdateProject" />
-          <FunctionImportMapping FunctionImportName="UpdateEmployeeStatus" FunctionName="harshmungra_SatvaModel.Store.UpdateEmployeeStatus" />
+          <FunctionImportMapping FunctionImportName="DeleteProject" FunctionName="harshmungra_SatvaModel.Store.DeleteProject" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="harshmungra_SatvaModel.DeleteProject_Result">
+                <ScalarProperty Name="Response" ColumnName="Response" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

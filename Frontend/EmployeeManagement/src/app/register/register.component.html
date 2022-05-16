@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div nz-row class="d-flex justify-content-center p-5">
+        <form nz-form [formGroup]="registerForm" class="customForm border p-5" (ngSubmit)="RegisterForm()">
+          <div nz-col nzSpan="24">
+            <p class="title-design">Register Form</p>
+          </div>
+          <nz-form-label [nzSpan]="12" nzRequired>Username</nz-form-label>
+          <nz-form-item >
+            <nz-form-control [nzSpan]="24" nzDisableAutoTips nzErrorTip="Please input your Username!">
+                <input nz-input formControlName="userName" nz-input placeholder="Username"  />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-label [nzSpan]="12" nzRequired>Password</nz-form-label>
+          <nz-form-item>    
+            <nz-form-control [nzSpan]="24"  nzDisableAutoTips [nzErrorTip]="passError">
+              <nz-input-group [nzSuffix]="suffixTemplate">
+                <input nz-input  [type]="passwordVisible ? 'text' : 'password'" formControlName="password" (ngModelChange)="validateConfirmPassword()" />
+              </nz-input-group>
+              <ng-template #suffixTemplate>
+                <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+              </ng-template>
+                <ng-template #passError let-control>
+                <ng-container *ngIf="control.hasError('required')">Please enter your password!</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">Please enter valid password</ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-label [nzSpan]="12" nzRequired>Confirm Password</nz-form-label>
+          <nz-form-item> 
+            <nz-form-control [nzSpan]="24" nzDisableAutoTips [nzErrorTip]="passwordErrorTpl">
+              <input nz-input type="password" formControlName="confirm" placeholder="confirm your password" />
+              <ng-template #passwordErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">Please confirm your password!</ng-container>
+                <ng-container *ngIf="control.hasError('confirm')">Password is inconsistent!</ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item class="w-100">
+           <span class="p-1">Or</span> <span class="p-1"><a routerLink="/login">Already have a account?</a></span>
+          </nz-form-item>
+          <nz-form-item class="w-100">
+            <nz-form-control>
+              <button nz-button nzType="primary" [disabled]="registerForm.controls['userName'].invalid">Register</button>
+            </nz-form-control>
+          </nz-form-item>
+         
+        </form>
+      </div>
+</div>
+ 
