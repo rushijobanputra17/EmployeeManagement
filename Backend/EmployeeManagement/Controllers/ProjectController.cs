@@ -70,5 +70,35 @@ namespace EmployeeManagement.Controllers
             }
             return objResponse;
         }
+
+        [HttpPut]
+        public JsonResponse UpdateProject(ProjectViewModel project)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    projectRepository.InsertUpdateProject(mapper.Map<Project>(project));
+                    objResponse = UtilityFunctions.GetJsonResponse(1, "Record updated successfully", project);
+                }
+                else
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(0, "Some input is invalid", ModelState.Values.SelectMany(v => v.Errors).Select(v => v.ErrorMessage).ToList());
+                }
+            }
+            catch (Exception ex)
+            {
+
+                if (ex.InnerException != null)
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(2, "Exception", ex.InnerException.Message);
+                }
+                else
+                {
+                    objResponse = UtilityFunctions.GetJsonResponse(2, "Exception", ex.Message);
+                }
+            }
+            return objResponse;
+        }
     }
 }
