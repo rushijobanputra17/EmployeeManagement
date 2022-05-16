@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f2938ed2-200f-4f81-99bd-2b0a5e8e2768": {
+      "ProjectGuid": "f2938ed2-200f-4f81-99bd-2b0a5e8e2768",
+      "DisplayName": "DataAccessLayer",
+      "ColorIndex": 0
+    },
+    "c1ce961b-c03a-4733-83b0-88e55ada2a11": {
+      "ProjectGuid": "c1ce961b-c03a-4733-83b0-88e55ada2a11",
+      "DisplayName": "EmployeeManagement",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}
