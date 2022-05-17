@@ -97,5 +97,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateEmployeeStatus" FunctionName="harshmungra_SatvaModel.Store.UpdateEmployeeStatus" />
   </EntityContainerMapping>
 </Mapping>
