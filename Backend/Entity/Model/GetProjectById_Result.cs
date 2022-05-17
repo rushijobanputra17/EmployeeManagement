@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.Model
+namespace Entity.Model
 {
     using System;
     
-    public partial class GetProjects_Result
+    public partial class GetProjectById_Result
     {
         public int Id { get; set; }
         public string Name { get; set; }

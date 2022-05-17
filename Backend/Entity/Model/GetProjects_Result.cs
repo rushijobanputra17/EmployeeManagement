@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.Model
+namespace Entity.Model
 {
     using System;
     
-    public partial class GetEmployees_Result
+    public partial class GetProjects_Result
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> DeptId { get; set; }
-        public System.DateTime JoiningDate { get; set; }
-        public decimal Salary { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public string Status { get; set; }
         public bool IsActive { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DataAccessLayer.Model;
+using Entity.Model;
 
 namespace DataAccessLayer.Interfaces
 {

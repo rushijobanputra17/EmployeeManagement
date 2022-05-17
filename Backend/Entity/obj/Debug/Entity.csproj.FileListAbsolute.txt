@@ -1,0 +1,6 @@
+D:\EmployeeManagement\Backend\Entity\bin\Debug\Entity.dll
+D:\EmployeeManagement\Backend\Entity\bin\Debug\Entity.pdb
+D:\EmployeeManagement\Backend\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+D:\EmployeeManagement\Backend\Entity\obj\Debug\Entity.dll
+D:\EmployeeManagement\Backend\Entity\obj\Debug\Entity.pdb
+D:\EmployeeManagement\Backend\Entity\obj\Debug\Entity.csproj.AssemblyReference.cache

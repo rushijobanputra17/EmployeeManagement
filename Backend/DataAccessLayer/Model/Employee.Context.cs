@@ -14,6 +14,7 @@ namespace DataAccessLayer.Model
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
+    using Entity.Model;
     
     public partial class harshmungra_SatvaEntities : DbContext
     {
@@ -27,8 +28,8 @@ namespace DataAccessLayer.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
     
         public virtual ObjectResult<GetEmployees_Result> GetEmployees(Nullable<bool> isActive)
         {
@@ -166,6 +167,40 @@ namespace DataAccessLayer.Model
                 new ObjectParameter("Status", typeof(bool));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UpdateEmployeeStatus", employeeIdParameter, statusParameter);
+        }
+    
+        public virtual int InsertUpdateTask(Nullable<int> taskId, string description, Nullable<int> projectId, Nullable<bool> isDeleted)
+        {
+            var taskIdParameter = taskId.HasValue ?
+                new ObjectParameter("TaskId", taskId) :
+                new ObjectParameter("TaskId", typeof(int));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var projectIdParameter = projectId.HasValue ?
+                new ObjectParameter("ProjectId", projectId) :
+                new ObjectParameter("ProjectId", typeof(int));
+    
+            var isDeletedParameter = isDeleted.HasValue ?
+                new ObjectParameter("IsDeleted", isDeleted) :
+                new ObjectParameter("IsDeleted", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUpdateTask", taskIdParameter, descriptionParameter, projectIdParameter, isDeletedParameter);
+        }
+    
+        public virtual ObjectResult<GetActivityHistory_Result> GetActivityHistory(Nullable<int> projectId, Nullable<int> employeeId)
+        {
+            var projectIdParameter = projectId.HasValue ?
+                new ObjectParameter("ProjectId", projectId) :
+                new ObjectParameter("ProjectId", typeof(int));
+    
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("EmployeeId", employeeId) :
+                new ObjectParameter("EmployeeId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActivityHistory_Result>("GetActivityHistory", projectIdParameter, employeeIdParameter);
         }
     }
 }

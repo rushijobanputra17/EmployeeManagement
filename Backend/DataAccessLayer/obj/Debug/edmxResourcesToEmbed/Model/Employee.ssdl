@@ -35,6 +35,10 @@
   <Function Name="DeleteProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ProjectId" Type="int" Mode="In" />
   </Function>
+  <Function Name="GetActivityHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProjectId" Type="int" Mode="In" />
+    <Parameter Name="EmployeeId" Type="int" Mode="In" />
+  </Function>
   <Function Name="GetEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IsActive" Type="bit" Mode="In" />
   </Function>
@@ -65,6 +69,12 @@
     <Parameter Name="Description" Type="nvarchar" Mode="In" />
     <Parameter Name="StartDate" Type="date" Mode="In" />
     <Parameter Name="IsActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertUpdateTask" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TaskId" Type="int" Mode="In" />
+    <Parameter Name="Description" Type="nvarchar" Mode="In" />
+    <Parameter Name="ProjectId" Type="int" Mode="In" />
+    <Parameter Name="IsDeleted" Type="bit" Mode="In" />
   </Function>
   <Function Name="UpdateEmployeeStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="EmployeeId" Type="int" Mode="In" />

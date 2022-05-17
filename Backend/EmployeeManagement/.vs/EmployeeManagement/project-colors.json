@@ -15,7 +15,17 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "f551e37f-97ee-4ff2-b9c8-e375818fd85b": {
+      "ProjectGuid": "f551e37f-97ee-4ff2-b9c8-e375818fd85b",
+      "DisplayName": "Entity",
+      "ColorIndex": 2
+    },
+    "b927f3b0-cd6e-4747-a406-c69f10d28669": {
+      "ProjectGuid": "b927f3b0-cd6e-4747-a406-c69f10d28669",
+      "DisplayName": "Core",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 4
 }

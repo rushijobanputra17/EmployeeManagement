@@ -55,47 +55,16 @@
   <ItemGroup>
     <Compile Include="Interfaces\IEmployeeRepository.cs" />
     <Compile Include="Interfaces\IProjectRepository.cs" />
-    <Compile Include="Model\DeleteProject_Result.cs">
-      <DependentUpon>Employee.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Employee.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Employee.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Employee.cs">
-      <DependentUpon>Employee.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Employee.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Employee.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Employee1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Employee.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GetEmployeesByProject_Result.cs">
-      <DependentUpon>Employee.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GetEmployees_Result.cs">
-      <DependentUpon>Employee.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GetProjectById_Result.cs">
-      <DependentUpon>Employee.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GetProjectsByEmployee_Result.cs">
-      <DependentUpon>Employee.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GetProjects_Result.cs">
-      <DependentUpon>Employee.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Project.cs">
-      <DependentUpon>Employee.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ViewModel\EmployeeViewModel.cs" />
-    <Compile Include="Model\ViewModel\ProjectViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmployeeRepository.cs" />
     <Compile Include="Services\ProjectRepository.cs" />
@@ -119,15 +88,15 @@
       <LastGenOutput>Employee.Context.cs</LastGenOutput>
       <DependentUpon>Employee.edmx</DependentUpon>
     </Content>
-    <Content Include="Model\Employee.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Employee.edmx</DependentUpon>
-      <LastGenOutput>Employee1.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{f551e37f-97ee-4ff2-b9c8-e375818fd85b}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

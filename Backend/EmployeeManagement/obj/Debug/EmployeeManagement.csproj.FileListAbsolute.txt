@@ -428,3 +428,7 @@ F:\CompanyTasks\EmployeeManagement\Backend\EmployeeManagement\bin\System.Numeric
 F:\CompanyTasks\EmployeeManagement\Backend\EmployeeManagement\bin\System.Runtime.CompilerServices.Unsafe.xml
 F:\CompanyTasks\EmployeeManagement\Backend\EmployeeManagement\bin\System.Text.Encodings.Web.xml
 F:\CompanyTasks\EmployeeManagement\Backend\EmployeeManagement\bin\System.Web.Http.Cors.xml
+D:\EmployeeManagement\Backend\EmployeeManagement\bin\Core.dll
+D:\EmployeeManagement\Backend\EmployeeManagement\bin\Entity.dll
+D:\EmployeeManagement\Backend\EmployeeManagement\bin\Core.pdb
+D:\EmployeeManagement\Backend\EmployeeManagement\bin\Entity.pdb

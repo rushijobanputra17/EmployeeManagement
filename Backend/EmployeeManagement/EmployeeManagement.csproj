@@ -283,7 +283,6 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\JsonResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -379,9 +378,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{b927f3b0-cd6e-4747-a406-c69f10d28669}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
       <Project>{f2938ed2-200f-4f81-99bd-2b0a5e8e2768}</Project>
       <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{f551e37f-97ee-4ff2-b9c8-e375818fd85b}</Project>
+      <Name>Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

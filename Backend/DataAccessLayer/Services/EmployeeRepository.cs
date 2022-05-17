@@ -2,6 +2,7 @@
 using System.Linq;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Model;
+using Entity.Model;
 
 namespace DataAccessLayer.Services
 { 

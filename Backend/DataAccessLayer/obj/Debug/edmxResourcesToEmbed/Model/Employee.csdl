@@ -1,21 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="harshmungra_SatvaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Employee">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="DeptId" Type="Int32" />
-    <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Salary" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-  </EntityType>
   <EntityContainer Name="harshmungra_SatvaEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Employees" EntityType="Self.Employee" />
     <FunctionImport Name="GetEmployees" ReturnType="Collection(harshmungra_SatvaModel.GetEmployees_Result)">
       <Parameter Name="IsActive" Mode="In" Type="Boolean" />
     </FunctionImport>
@@ -59,6 +44,17 @@
       <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
       <Parameter Name="Status" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <FunctionImport Name="InsertUpdateTask">
+      <Parameter Name="TaskId" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+      <Parameter Name="IsDeleted" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="GetActivityHistory" ReturnType="Collection(harshmungra_SatvaModel.GetActivityHistory_Result)">
+      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+      <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Employees" EntityType="harshmungra_SatvaModel.Employee" />
   </EntityContainer>
   <ComplexType Name="GetEmployees_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -113,4 +109,29 @@
   <ComplexType Name="DeleteProject_Result">
     <Property Type="Int32" Name="Response" Nullable="true" />
   </ComplexType>
+  <ComplexType Name="GetActivityHistory_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="true" />
+    <Property Type="Int32" Name="EmployeeId" Nullable="true" />
+    <Property Type="String" Name="ActivityDescription" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ProjectStatus" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="TaskId" Nullable="true" />
+    <Property Type="String" Name="TaskStatus" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="Operation" Nullable="false" MaxLength="6" />
+    <Property Type="DateTime" Name="ActivityDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DeptId" Type="Int32" />
+    <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Salary" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
 </Schema>

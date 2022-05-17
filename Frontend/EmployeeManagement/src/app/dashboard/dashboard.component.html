@@ -1,7 +1,7 @@
 <div  [ngClass]="{'blurPage': showLoader}">    
     <div class="container-fluid">
       <div class="m-1"><h1 class="title-design">Project Details</h1></div>
-      <button class="btn btn-primary m-2 p-2"(click)="showModal()">Add Project</button>
+      <button class="btn btn-primary m-2 p-2"(click)="showModal()">Add Product</button>
       <button class="btn btn-primary p-2"(click)="getEmployeeData()">Get Data</button>
      <nz-switch class=" p-2" [(ngModel)]="switchValue"></nz-switch><span class="p-2 lead" style="font-size:22px">Status</span>
       <div class="d-flex justify-content-end"> 
@@ -51,7 +51,7 @@
         </nz-table>
     </div>
 </div>
-    <nz-modal [(nzVisible)]="isVisible" nzCentered nzTitle="Add Project" [nzWidth]="650" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Add Project" [nzWidth]="650" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
         <ng-container *nzModalContent>
           <form nz-form [formGroup]="validateForm" class="login-form">
             <div class="modal-container">
@@ -80,7 +80,7 @@
                 <nz-form-label [nzSm]="7" [nzXs]="24" nzRequired>Project Status</nz-form-label>
                 <nz-form-item>              
                   <nz-form-control  nzErrorTip="Please select Status!">
-                    <nz-select  nz-input formControlName="status" nzPlaceHolder="Choose Project Status">
+                    <nz-select  nz-input formControlName="status">
                         <nz-option nzValue="InProgress" selected nzLabel="InProgress"></nz-option>
                         <nz-option nzValue="Completed" nzLabel="Completed"></nz-option>
                         <nz-option nzValue="Created" nzLabel="Created" ></nz-option>

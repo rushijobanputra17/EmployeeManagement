@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.Model
+namespace Entity.Model
 {
     using System;
     using System.Collections.Generic;

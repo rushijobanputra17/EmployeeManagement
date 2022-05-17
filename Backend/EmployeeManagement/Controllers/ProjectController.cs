@@ -4,6 +4,7 @@ using DataAccessLayer.Model.ViewModel;
 using DataAccessLayer.Services;
 using EmployeeManagement.CommonFunctions;
 using EmployeeManagement.Models;
+using Entity.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

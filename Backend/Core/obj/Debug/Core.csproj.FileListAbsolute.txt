@@ -1,0 +1,9 @@
+D:\EmployeeManagement\Backend\Core\bin\Debug\Core.dll
+D:\EmployeeManagement\Backend\Core\bin\Debug\Core.pdb
+D:\EmployeeManagement\Backend\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+D:\EmployeeManagement\Backend\Core\obj\Debug\Core.dll
+D:\EmployeeManagement\Backend\Core\obj\Debug\Core.pdb
+D:\EmployeeManagement\Backend\Core\obj\Debug\Core.csproj.AssemblyReference.cache
+D:\EmployeeManagement\Backend\Core\bin\Debug\Entity.dll
+D:\EmployeeManagement\Backend\Core\bin\Debug\Entity.pdb
+D:\EmployeeManagement\Backend\Core\obj\Debug\Core.csproj.CopyComplete

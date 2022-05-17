@@ -7,12 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.Model
+namespace Entity.Model
 {
     using System;
     
-    public partial class DeleteProject_Result
+    public partial class GetEmployees_Result
     {
-        public Nullable<int> Response { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> DeptId { get; set; }
+        public System.DateTime JoiningDate { get; set; }
+        public decimal Salary { get; set; }
+        public bool IsActive { get; set; }
     }
 }

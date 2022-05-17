@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
-using DataAccessLayer.Model;
 using DataAccessLayer.Model.ViewModel;
 using DataAccessLayer.Services;
 using EmployeeManagement.CommonFunctions;
-using EmployeeManagement.Models;
+using Entity.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace EmployeeManagement.Controllers

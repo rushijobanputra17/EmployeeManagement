@@ -9,14 +9,11 @@ export class DaraParsingService {
 
   constructor(private http: HttpClient) { }
 
-  ProjectBody={
-    "Id": 1,
-    "Name": "sample string 1",
-    "Description": "sample string 2",
-    "StartDate": "2022-05-17T10:54:34.5399036+05:30",
-    "Status": "sample string 4",
-    "IsActive": ""
-  }
+  // registerBody={
+  //   "Email": "admin@getnada.com",
+  //   "Password": "Admin@1234",
+  //   "ConfirmPassword": "Admin@1234"
+  // }
 
 
   loginUser(email: string,password: string): Observable<any>{
@@ -26,7 +23,7 @@ export class DaraParsingService {
     body.set('grant_type',"password");
   
       const header=new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-      return this.http.post<any>(`https://localhost:44390/Token`,body,{headers:header});
+      return this.http.post<any>(`https://4c56-106-201-236-89.ngrok.io/Token`,body,{headers:header});
     }
 
     RegisterUser(email: string,password: string,cpassword: string): Observable<any>{
@@ -35,16 +32,11 @@ export class DaraParsingService {
       Registerbody.set('Password',password);
       Registerbody.set('ConfirmPassword',cpassword);
         const header=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-        return this.http.post<any>(`https://localhost:44390/api/Account/Register`,Registerbody,{headers:header});
+        return this.http.post<any>(`https://4c56-106-201-236-89.ngrok.io/api/Account/Register`,Registerbody,{headers:header});
       }
 
     getEmployeeData(isActive:any){
         const header=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-        return this.http.get<any>(`https://localhost:44390/api/Project?isActive=${isActive}`,{headers:header});
+        return this.http.get<any>(`https://4c56-106-201-236-89.ngrok.io/api/Project?isActive=${isActive}`,{headers:header});
     }
-
-    AddProjectData(){
-      const header=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-      return this.http.post<any>(`https://localhost:44390/api/Project`,this.ProjectBody,{headers:header});
-  }
 }

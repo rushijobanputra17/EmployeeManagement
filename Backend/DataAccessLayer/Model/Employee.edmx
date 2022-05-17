@@ -40,6 +40,10 @@
         <Function Name="DeleteProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProjectId" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetActivityHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProjectId" Type="int" Mode="In" />
+          <Parameter Name="EmployeeId" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IsActive" Type="bit" Mode="In" />
         </Function>
@@ -71,6 +75,12 @@
           <Parameter Name="StartDate" Type="date" Mode="In" />
           <Parameter Name="IsActive" Type="bit" Mode="In" />
         </Function>
+        <Function Name="InsertUpdateTask" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TaskId" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="ProjectId" Type="int" Mode="In" />
+          <Parameter Name="IsDeleted" Type="bit" Mode="In" />
+        </Function>
         <Function Name="UpdateEmployeeStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EmployeeId" Type="int" Mode="In" />
           <Parameter Name="Status" Type="bit" Mode="In" />
@@ -83,22 +93,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="harshmungra_SatvaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DeptId" Type="Int32" />
-          <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Salary" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityContainer Name="harshmungra_SatvaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
           <FunctionImport Name="GetEmployees" ReturnType="Collection(harshmungra_SatvaModel.GetEmployees_Result)">
           <Parameter Name="IsActive" Mode="In" Type="Boolean" />
           </FunctionImport>
@@ -142,6 +137,17 @@
             <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
             <Parameter Name="Status" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <FunctionImport Name="InsertUpdateTask">
+            <Parameter Name="TaskId" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="IsDeleted" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="GetActivityHistory" ReturnType="Collection(harshmungra_SatvaModel.GetActivityHistory_Result)">
+            <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+            <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Employees" EntityType="harshmungra_SatvaModel.Employee" />
         </EntityContainer>
         <ComplexType Name="GetEmployees_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -196,27 +202,37 @@
         <ComplexType Name="DeleteProject_Result">
           <Property Type="Int32" Name="Response" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="GetActivityHistory_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ProjectId" Nullable="true" />
+          <Property Type="Int32" Name="EmployeeId" Nullable="true" />
+          <Property Type="String" Name="ActivityDescription" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="ProjectStatus" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="TaskId" Nullable="true" />
+          <Property Type="String" Name="TaskStatus" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Operation" Nullable="false" MaxLength="6" />
+          <Property Type="DateTime" Name="ActivityDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DeptId" Type="Int32" />
+          <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Salary" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="harshmungra_SatvaModelStoreContainer" CdmEntityContainer="harshmungra_SatvaEntities">
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="harshmungra_SatvaModel.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
-                <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetEmployees" FunctionName="harshmungra_SatvaModel.Store.GetEmployees">
             <ResultMapping>
               <ComplexTypeMapping TypeName="harshmungra_SatvaModel.GetEmployees_Result">
@@ -299,6 +315,37 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UpdateEmployeeStatus" FunctionName="harshmungra_SatvaModel.Store.UpdateEmployeeStatus" />
+          <FunctionImportMapping FunctionImportName="InsertUpdateTask" FunctionName="harshmungra_SatvaModel.Store.InsertUpdateTask" />
+          <FunctionImportMapping FunctionImportName="GetActivityHistory" FunctionName="harshmungra_SatvaModel.Store.GetActivityHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="harshmungra_SatvaModel.GetActivityHistory_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
+                <ScalarProperty Name="ProjectStatus" ColumnName="ProjectStatus" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="TaskStatus" ColumnName="TaskStatus" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="harshmungra_SatvaModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
