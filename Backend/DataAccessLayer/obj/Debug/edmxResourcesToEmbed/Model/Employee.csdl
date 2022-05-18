@@ -54,7 +54,16 @@
       <Parameter Name="ProjectId" Mode="In" Type="Int32" />
       <Parameter Name="EmployeeId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="Activities" EntityType="harshmungra_SatvaModel.Activity" />
+    <AssociationSet Name="FK__Activity__Projec__3A81B327" Association="harshmungra_SatvaModel.FK__Activity__Projec__3A81B327">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Activity" EntitySet="Activities" />
+    </AssociationSet>
     <EntitySet Name="Employees" EntityType="harshmungra_SatvaModel.Employee" />
+    <AssociationSet Name="FK__Activity__Employ__3B75D760" Association="harshmungra_SatvaModel.FK__Activity__Employ__3B75D760">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Activity" EntitySet="Activities" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="GetEmployees_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -83,6 +92,7 @@
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Activities" Relationship="harshmungra_SatvaModel.FK__Activity__Projec__3A81B327" FromRole="Project" ToRole="Activity" />
   </EntityType>
   <ComplexType Name="GetProjectById_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -120,6 +130,34 @@
     <Property Type="String" Name="Operation" Nullable="false" MaxLength="6" />
     <Property Type="DateTime" Name="ActivityDate" Nullable="false" Precision="23" />
   </ComplexType>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectId" Type="Int32" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <Property Name="ActivityDescription" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectStatus" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="TaskId" Type="Int32" />
+    <Property Name="TaskStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Operation" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Project" Relationship="harshmungra_SatvaModel.FK__Activity__Projec__3A81B327" FromRole="Activity" ToRole="Project" />
+    <NavigationProperty Name="Employee" Relationship="harshmungra_SatvaModel.FK__Activity__Employ__3B75D760" FromRole="Activity" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK__Activity__Projec__3A81B327">
+    <End Type="harshmungra_SatvaModel.Project" Role="Project" Multiplicity="0..1" />
+    <End Type="harshmungra_SatvaModel.Activity" Role="Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="Employee">
     <Key>
       <PropertyRef Name="Id" />
@@ -133,5 +171,18 @@
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Activities" Relationship="harshmungra_SatvaModel.FK__Activity__Employ__3B75D760" FromRole="Employee" ToRole="Activity" />
   </EntityType>
+  <Association Name="FK__Activity__Employ__3B75D760">
+    <End Type="harshmungra_SatvaModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="harshmungra_SatvaModel.Activity" Role="Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activity">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

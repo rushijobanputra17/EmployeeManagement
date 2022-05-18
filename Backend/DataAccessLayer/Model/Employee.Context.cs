@@ -29,6 +29,7 @@ namespace DataAccessLayer.Model
         }
     
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Activity> Activities { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
     
         public virtual ObjectResult<GetEmployees_Result> GetEmployees(Nullable<bool> isActive)

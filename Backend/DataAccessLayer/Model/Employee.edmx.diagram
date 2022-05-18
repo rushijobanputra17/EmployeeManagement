@@ -6,7 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="bbbf8139228341a6bc12448d9f732f6f" Name="Diagram1">
         <EntityTypeShape EntityType="harshmungra_SatvaModel.Project" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="harshmungra_SatvaModel.Employee" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="harshmungra_SatvaModel.Activity" Width="1.5" PointX="5.625" PointY="0.75" />
+        <AssociationConnector Association="harshmungra_SatvaModel.FK__Activity__Projec__3A81B327" />
+        <EntityTypeShape EntityType="harshmungra_SatvaModel.Employee" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="harshmungra_SatvaModel.FK__Activity__Employ__3B75D760" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
